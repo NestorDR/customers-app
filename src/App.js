@@ -3,11 +3,11 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import HomeContainer from './containers/HomeContainer';
 import CustomersContainer from './containers/CustomersContainer';
 import CustomerContainer from './containers/CustomerContainer';
+import NewCustomerContainer from './containers/NewCustomerContainer';
 import './App.css';
 
 function App() {
   const renderHome = () => <HomeContainer />;
-  const renderNewCustomerContainer = () => <h1>New Customer Container</h1>;
   const renderNotFoundPage = () => <h1>Not Found Page</h1>;
 
   /* Dentro de <Router> solo puede haber un único elemento*/
@@ -29,7 +29,7 @@ function App() {
             ya que "/:dni" hace las veces de un wildcard, para el cual "/new" es válido y se lo
             interpretaría como un Nº de DNI
           */}
-          <Route exact path="/customers/new" component={renderNewCustomerContainer} />
+          <Route exact path="/customers/new" component={NewCustomerContainer}/>
 
           {/*
             En vez de usar atributo component={CustomerContainer}, como sigue

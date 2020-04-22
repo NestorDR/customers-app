@@ -1,0 +1,16 @@
+Visitar         : https://github.com/typicode/json-server
+
+Instalación     : npm install -g json-server
+
+Configuración   : Crear archivo db.json con algunos datos en la carpeta del proyecto.
+                  Si el archivo no existe, lo crear en la 1º ejecución.
+
+Ejecución       : json-server --watch db.json --port 3001
+
+Prueba OK       : http://localhost:3001/customers
+                  http://localhost:3001/customers/21000000  (Get por campo "id")
+                  http://localhost:3001/customers?name=Nestor
+
+Simulación Error : Visitar: https://github.com/typicode/json-server#module
+                   npm install json-server --save-dev
+                   node node-server.js

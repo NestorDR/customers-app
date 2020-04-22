@@ -1,3 +1,10 @@
+## Project Description
+
+This project is my implemntation of a part of the course [React JS + Redux + ES6. Completo ¡De 0 a experto! (español)](https://www.udemy.com/course/react-js-redux-es6-completo-de-0-a-experto-espanol).
+Created by @correooke (Engineer Emiliano Ocariz)
+
+The project is not exactly the same as the one developed during the course. It has bit differences, for example it makes use of Hooks. And it's highly commented.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -11,6 +18,17 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
+
+### `json-server --watch db.json --port 3001`
+
+Runs the full fake REST API over JSON Server, based on the db.json file.<br />
+Open [http://localhost:3001/customers](http://localhost:3001/customers) to view it in the browser.
+
+You can view details about JSON Server on [https://github.com/typicode/json-server](https://github.com/typicode/json-server)
+
+### `node node-server.js`
+
+It's an alternative to the previous script to implement fake validations, or other programmed code.
 
 ### `npm test`
 

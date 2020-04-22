@@ -1,3 +1,4 @@
+// rscp→	stateless component with prop types skeleton
 import React, {useEffect} from 'react';
 import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
@@ -53,14 +54,14 @@ CustomersContainer.propTypes = {
       CustomersContainer.defaultProps = {
         customers: [
           {
-            "dni": "21659018",
+            "dni": "21000000",
             "name": "Nestor",
             "age": 49,
           },
           {
-          "dni": "20424228",
+          "dni": "20000000",
           "name": "Rocio",
-          "age": 51,
+          "age": 41,
           }
         ]
       };
@@ -69,6 +70,11 @@ CustomersContainer.defaultProps = {
   customers: []
 };
 
+/*
+  mapStateToProps retorna un objeto con las propiedades (values) que utilizará
+   el componente, propiedades que obtiene del state que llega como input param
+  mapStateToProps tiene 2 input params posibles: state, props
+*/
 const mapStateToProps = state => ({
   customers: getCustomers(state),
 });
@@ -76,8 +82,9 @@ const mapStateToProps = state => ({
 /*
   mapDispatchToProps retorna un objeto con funciones agregadas al parámetro props de la función conectada,
     en este caso CustomersContainer
-  esas funciones van a llamar al dispatch que llega como input param de mapDispatchToProps
-  es decir, dispatch viene como parámetro para que se usen dentro de las funcionees
+  Esas funciones van a llamar al dispatch que debe llegar como input param de mapDispatchToProps (es decir,
+    dispatch debiera venir como parámetro para que se usen dentro de las funciones).
+  Pero al introducir el uso de la librería redux-actions, ya ni siquiera es necesario el input param disptach.
 */
 const mapDispatchToProps = { fetchCustomers };
 

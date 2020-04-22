@@ -1,36 +1,36 @@
 {
   "customers": [
     {
+      "id": "21000000",
       "dni": "21000000",
       "name": "Nestor",
       "age": 49
     },
     {
+      "id": "20000000",
       "dni": "20000000",
-      "name": "Rocio",
+      "name": "Rocío",
       "age": 41
     },
     {
+      "id": "55667788",
       "dni": "55667788",
       "name": "Pony",
       "age": 18
-    }
-  ],
-  "posts": [
+    },
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "id": "30000001",
+      "dni": "30000001",
+      "name": "Forzar Server Error",
+      "age": 17
     }
   ],
   "comments": [
     {
       "id": 1,
+      "dni": "21000000",
       "body": "some comment",
       "postId": 1
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }

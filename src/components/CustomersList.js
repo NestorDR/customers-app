@@ -1,3 +1,4 @@
+// rscp→	stateless component with prop types skeleton
 import React from 'react';
 import * as PropTypes from 'prop-types';
 import CustomerListItem from './CustomerListItem';
@@ -12,8 +13,8 @@ const CustomersList = ({customers, urlPath}) => {
                   key={c.dni}
                   dni={c.dni}
                   name={c.name}
-                  editAction={'Editar'}
-                  deleteAction={'Eliminar'}
+                  editAction="Editar"
+                  deleteAction="Eliminar"
                   urlPath={urlPath}>
               </CustomerListItem>
             )

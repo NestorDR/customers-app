@@ -1,3 +1,4 @@
+// rscp→	stateless component
 import React from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import AppFrame from '../components/AppFrame';
@@ -6,7 +7,7 @@ import CustomersActions from '../components/CustomersActions';
 const HomeContainer = props => {
 
   const handleOnClick = () => {
-    console.log('handleOnClick');
+    // console.log('HomeContainer.handleOnClick');
     props.history.push('/customers');
   };
   const linkStyle = {

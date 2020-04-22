@@ -1,3 +1,4 @@
+// rscp→	stateless component with prop types skeleton
 import React from 'react';
 import PropTypes from 'prop-types';
 

@@ -5,5 +5,5 @@ import {customers} from './customers';
 
 export default combineReducers ({
   customers,
-  form: reduxForm
+  form: reduxForm     // es importante usar la key "form", es la esperado por la librería redux-form
 });

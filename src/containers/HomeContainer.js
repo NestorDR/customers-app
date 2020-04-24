@@ -17,9 +17,10 @@ const HomeContainer = props => {
   return (
     <div>
       <AppFrame
-        header='Pantalla inicial'
+        header='Inicio'
         body={
           <div>
+            <img src="https://lh6.googleusercontent.com/C0YXQ2ZHuvYkB2GEA4OfkzlBkU56stTvOxeJCQQGaFameldhTRQtzilAcMRveF4SwL3Xfw1muoPE7g=w1360-h677-rw" alt=""/>
             <CustomersActions>
               <Link to="/customers" style={linkStyle}>Listado de Clientes con Link</Link>
               <button onClick={handleOnClick}>Listado de Clientes con button</button>

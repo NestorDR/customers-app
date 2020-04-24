@@ -11,6 +11,7 @@ export const setPropsAsInitial = WrappedComponent => (
       render() {
         // El atributo enableReinitialize fuerza la reinicialización del estado inicial de valores del form,
         //   cuando usuario solicita refrescar la página (tecla F5)
+        // console.log(this.props);
         return <WrappedComponent {...this.props}
                                  initialValues={this.props}
                                  enableReinitialize />

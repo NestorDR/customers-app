@@ -1,15 +1,15 @@
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  monospace;
 }
 
 .app-frame {
@@ -46,6 +46,7 @@ code {
   border-style: solid;
 }
 
+/* filas pares blancas */
 .customers-list .customers-list-item {
   width: 100%;
   background: #FFF;
@@ -53,6 +54,7 @@ code {
   height: 40px;
 }
 
+/* Efecto cebra para filas impares grises */
 .customers-list .customers-list-item:nth-child(even) {
   background: #EEE;
 }
@@ -70,6 +72,8 @@ code {
   display: inline-block;
   line-height: 40px;
 }
+
+/* first-child para darle a La primer columna tiene un aspecto diferente */
 .customers-list-item .field:first-child {
   width: 70%;
   margin: 0;
@@ -97,7 +101,7 @@ code {
 
 .app-frame p {
   color: white;
-  font-size: 10px;
+  font-size: 14px;
   font-style: italic;
 }
 

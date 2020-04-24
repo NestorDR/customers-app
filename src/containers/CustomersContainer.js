@@ -12,7 +12,13 @@ import {getCustomers} from '../selectors/customer';
 const CustomersContainer = props => {
   // useEffect reemplaza <Class Component> DidMount
   useEffect(() => {
-    props.fetchCustomers();
+    if (props.customers.length === 0) {
+      // El if previo, provoca que solo se busque los clientes la primera vez que se renderiza el container pero ,
+      // provoca que no necesriamente se traiga la info más nueva almacenada en el servidor, que pudo haber sido
+      // actualizada por otros usuarios, es un riesgo que se puede correr dependiendo del escenario del usuario
+      // La consecuencia positiva es que se reduce el consumo de datos, mejorando la UX
+      props.fetchCustomers();
+    }
   }, []);
 
   const handleAddNew = () => {

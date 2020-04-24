@@ -10,7 +10,7 @@ const AppFrame = ({header, body}) => {
       <div className="app-frame">
         <AppHeader title={header}/>
         <div>{body}</div>
-        <div>Aplicación de Ejemplo</div>
+        <div><p>Aplicación de Ejemplo</p></div>
       </div>
     </div>
   );

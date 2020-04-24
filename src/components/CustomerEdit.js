@@ -1,16 +1,20 @@
 // rscp→	stateless component with prop types skeleton
-import React from 'react';
+// useEffect reemplaza a DidMount. Visitar: https://wattenberger.com/blog/react-hooks
+// useRef para acceder a componentes NO controlados, y aquí para setear foco.
+//        Visitar https://reactgo.com/react-focus-input/
+import React, {useEffect, useRef} from 'react';
 import {Prompt} from 'react-router-dom';
-import * as PropTypes from 'prop-types';
 import {Field, reduxForm} from 'redux-form';
+import * as PropTypes from 'prop-types';
 import {setPropsAsInitial} from '../helpers/setPropsAsInitial';
 import {capitalize} from '../helpers/myString';
 import CustomersActions from './CustomersActions';
 
-{/* La validación a nivel de campo :
+/*
+  La validación a nivel de campo :
     - se prioriza por encima de la validación de Form
     - difiere entre navegadores, hay que probar como resulta
-*/}
+*/
 const isNumber  = fieldValue => (
   (!fieldValue || isNaN(Number(fieldValue))) && "Dato numérico requerido"
 );
@@ -19,7 +23,7 @@ const isRequired = fieldValue => (
   !fieldValue && "Dato requerido"
 );
 
-{/* La validación de nivel de Form, recibe la colección de campos */}
+/* La validación de nivel de Form, recibe la colección de campos */
 const validateForm = fieldValues => {
   const error = {};
 
@@ -34,19 +38,6 @@ const validateForm = fieldValues => {
   return error;
 };
 
-const renderField = ({input, label, name, placeholder, type, meta: { touched, error }}) => (
-  <div>
-    <label htmlFor={name}>{label}</label>
-    {/*
-      Al siguiente elemento <input> mediante spread operator {...input} se pasan todas las propiedades
-      del campo original "input", que si NO existiera esta función renderField,
-      hubiera queda igualado al atributo component de <Field>
-    */}
-    <input {...input} placeholder={placeholder} type={type || "text"}/>
-    { touched && error && <span>{error}</span> }
-  </div>
-);
-
 // Funciones Parse y Format de tag <Field>
 // Función para parsear campos numéricos (ej. Edad) antes de actualizar el store de Redux
 const parseToNumber = fieldValue => fieldValue && Number(fieldValue);
@@ -59,7 +50,33 @@ const formatToUpper = fieldValue => fieldValue && fieldValue.toUpperCase();
 const onlyYoung = (fieldValue, previousFieldValue, allFormValues) =>
   fieldValue && (fieldValue < 120 ? fieldValue : previousFieldValue);
 
-let CustomerEdit = ({name, dni, age, handleSubmit, onBack, submitting, pristine, submitSucceeded, error}) => {
+let CustomerEdit = ({dni, name, age, handleSubmit, onBack, submitting, pristine, submitSucceeded, error}) => {
+
+  const focusInputElement = useRef(null);
+
+  useEffect(() => {
+    if (focusInputElement.current) {
+      focusInputElement.current.focus();
+    }
+  }, []);
+
+  const renderField = ({autofocus, input, label, name, placeholder, type, meta: { touched, error }}) => (
+    <div>
+      <label htmlFor={name}>{label}</label>
+      {/*
+      Al siguiente elemento <input> mediante spread operator {...input} se pasan todas las propiedades
+      del campo original "input", que si NO existiera esta función renderField,
+      hubiera queda igualado al atributo component de <Field>
+    */}
+      <input {...input}
+             // ref={autofocus && focusInputElement}
+             autoFocus={autofocus}
+             placeholder={placeholder}
+             type={type || "text"}/>
+      { touched && error && <span>{error}</span> }
+    </div>
+  );
+
   return (
     <div>
       <h2>Edición de Cliente</h2>
@@ -78,6 +95,7 @@ let CustomerEdit = ({name, dni, age, handleSubmit, onBack, submitting, pristine,
         */ }
         { /* Validación a nivel de campo con validate de <Field> */}
         <Field
+          autofocus
           component={renderField}
           label="DNI"
           name="dni"
@@ -126,7 +144,6 @@ CustomerEdit.propTypes = {
   age: PropTypes.number,
   onBack: PropTypes.func.isRequired,
 };
-
 
 /*
  Se decora el componente CustomerEdit con el HOC (High Order Component) reduxForm

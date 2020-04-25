@@ -7,6 +7,8 @@ import {Prompt} from 'react-router-dom';
 import {Field, reduxForm} from 'redux-form';
 import * as PropTypes from 'prop-types';
 import {setPropsAsInitial} from '../helpers/setPropsAsInitial';
+import {accessControl} from '../helpers/accessControl';
+import {CUSTOMER_EDIT} from '../constants';
 import {capitalize} from '../helpers/myString';
 import CustomersActions from './CustomersActions';
 
@@ -154,11 +156,18 @@ CustomerEdit = reduxForm({
     validate: validateForm
   })(CustomerEdit);
 
-// Usando react-redux.connect, no recomendado para un componente representacional
-// import {connect} from 'react-redux';
-// CustomerEdit = connect( (state, props) => ({initialValues: props}))(CustomerEdit);
-
-/*   setPropsAsInitial es un HOC  */
+/*
+  Usando react-redux.connect, no recomendado para un componente representacional
+    import {connect} from 'react-redux';
+    CustomerEdit = connect( (state, props) => ({initialValues: props}))(CustomerEdit);
+  Por eso se introduce setPropsAsInitial, que es un HOC para establecer los initialValues del redux Form
+*/
 CustomerEdit = setPropsAsInitial(CustomerEdit);
+
+/*
+  Para validar que el usuario tiene permiso de edición de datos se decora con el HOC accessControl
+*/
+const permissionsRequired = [CUSTOMER_EDIT];
+CustomerEdit = accessControl(permissionsRequired)(CustomerEdit);
 
 export default CustomerEdit;

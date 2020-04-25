@@ -1,6 +1,8 @@
 // rscp→	stateless component with prop types skeleton
 import React from 'react';
 import * as PropTypes from 'prop-types';
+import {accessControl} from '../helpers/accessControl';
+import {CUSTOMER_VIEW} from '../constants';
 import CustomersActions from './CustomersActions';
 
 const CustomerData = ({id, dni, name, age, onBack, isDeleteAllow, onDelete}) => {
@@ -33,4 +35,8 @@ CustomerData.propTypes = {
   onDelete: PropTypes.func
 };
 
-export default CustomerData;
+/*
+  Para validar que el usuario tiene acceso de visualización de datos se decora con el HOC accessControl
+*/
+const permissionsRequired = [CUSTOMER_VIEW];
+export default accessControl(permissionsRequired)(CustomerData);

@@ -17,7 +17,7 @@ import {FETCH_CUSTOMERS, INSERT_CUSTOMER, UPDATE_CUSTOMER, DELETE_CUSTOMER} from
   parámetro es un objeto clave: valor
   [Clave acción (o tipo de acción siendo estricto)]: Valor es función de transformación del reducers
  */
-const DEFAULT_STATE = [];   // No tengo claro qué se le pasa aquí
+const DEFAULT_STATE = [];   // No tengo claro qué se le pasa aquí, creo es el estado inicial
 export const customers = handleActions(
   {
     [FETCH_CUSTOMERS]: (state, action) => [...action.payload],
